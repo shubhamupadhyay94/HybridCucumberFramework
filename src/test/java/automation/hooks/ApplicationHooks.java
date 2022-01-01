@@ -10,13 +10,11 @@ import framework.utilities.ReadExcel;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import net.serenitybdd.core.annotations.events.AfterScenario;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assume;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
 
 import java.io.File;
 import java.io.IOException;
@@ -75,7 +73,7 @@ public class ApplicationHooks {
         }
     }
 
-    @After(order = 0)
+    @After(order = 1)
     public void tearDown() {
         try {
             driver.quit();
@@ -84,7 +82,7 @@ public class ApplicationHooks {
         }
     }
 
-    @After(order = 1)
+    @After(order = 0)
     public void screenshot(Scenario scenario) {
         try {
             if (scenario.isFailed()) {

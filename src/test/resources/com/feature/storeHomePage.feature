@@ -14,7 +14,7 @@ Feature: Validate store home page
     When I verify the store home page details
     Then I should be able to see "CATEGORIES,Phones,Laptops,Monitors" tab
 
-  @smoke @fail
+  @smoke
   Scenario: As a App User, After clicking on monitors tab, I should be able to see few monitors
     When I click on monitors tab
     Then I should be able to see "Apple monitor 24,ASUS Full HD" monitor list
@@ -28,7 +28,6 @@ Feature: Validate store home page
       | Nokia lumia 1520  |
       | Samsung galaxy s6 |
 
-  @fail
   Scenario Outline: As a App User, I should be able to see mobile details on new tab
     And I click on phones tab
     When I click on different phone "<phone>"
