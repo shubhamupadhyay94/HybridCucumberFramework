@@ -7,3 +7,4 @@
 /.idea
 /HybridAutomationProject.iml
 /reports
+ ./src/test/resources/com/input/TestData.xlsx

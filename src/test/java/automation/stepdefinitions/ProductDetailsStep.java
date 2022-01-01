@@ -54,11 +54,9 @@ public class ProductDetailsStep {
             Map<String,String> eachProduct= (Map<String, String>) itr.next();
             Set set =eachProduct.keySet();
 
-            System.out.println("mobile name product details"+ApplicationHooks.map.get(eachProduct.get("mobilePrice")));
-            System.out.println("mobile name product details"+detailsPage.getProductPrice().replaceAll("[^0-9]",""));
             Assert.assertEquals(ApplicationHooks.map.get(eachProduct.get("mobileName")),detailsPage.getProductName().trim());
-           // Assert.assertEquals(Integer.parseInt(ApplicationHooks.map.get(eachProduct.get("mobilePrice")).replaceAll("\\.0*$", "").trim()),detailsPage.getProductPrice().replaceAll("[^0-9]","").trim());
-            Assert.assertEquals(ApplicationHooks.map.get(eachProduct.get("mobileDescription")),detailsPage.getProductDescription().trim());
+           Assert.assertEquals(Integer.parseInt(ApplicationHooks.map.get(eachProduct.get("mobilePrice")).replaceAll("\\.0*$", "").trim()),detailsPage.getProductPrice().replaceAll("[^0-9]","").trim());
+           Assert.assertEquals(ApplicationHooks.map.get(eachProduct.get("mobileDescription")),detailsPage.getProductDescription().trim());
         }
     }
 
