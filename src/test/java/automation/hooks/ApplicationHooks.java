@@ -73,7 +73,7 @@ public class ApplicationHooks {
         }
     }
 
-    @After(order = 1)
+    @After(order = 0)
     public void tearDown() {
         try {
             driver.quit();
@@ -82,7 +82,7 @@ public class ApplicationHooks {
         }
     }
 
-    @After(order = 0)
+    @After(order = 1)
     public void screenshot(Scenario scenario) {
         try {
             if (scenario.isFailed()) {
