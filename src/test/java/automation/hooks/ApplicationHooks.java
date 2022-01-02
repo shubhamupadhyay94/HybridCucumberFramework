@@ -38,13 +38,17 @@ public class ApplicationHooks {
 //
 //    }
 
+    String browser = null;
+
     @Before(order = 0)
     public void getProperty() throws ConfigFileReaderException {
         try {
             config = new ConfigFileReader();
             properties = config.configFile();
 
-            System.out.println("browser ----" +System.getProperty("browser"));
+            browser=System.getProperty("browser");
+
+             System.out.println("browser ----" +browser);
             System.out.println("TestEnvironment----" +System.getProperty("testEnv"));
             System.out.println("testTag ----" +System.getProperty("testTag"));
 
@@ -69,10 +73,16 @@ public class ApplicationHooks {
     @Before(order = 1)
     public void launchBrowser() {
         try {
+            if(browser!=null){
+                //String browserName = properties.get(FrameworkConstant.BROWSER_NAME).toString();
+                driverUtilities = new DriverUtilities();
+                driver = driverUtilities.initDriver(browser);
+            }else{
+                String browserName = properties.get(FrameworkConstant.BROWSER_NAME).toString();
+                driverUtilities = new DriverUtilities();
+                driver = driverUtilities.initDriver(browserName);
+            }
 
-            String browserName = properties.get(FrameworkConstant.BROWSER_NAME).toString();
-            driverUtilities = new DriverUtilities();
-            driver = driverUtilities.initDriver(browserName);
         } catch (DriverUtilitiesException e) {
             e.printStackTrace();
         }
