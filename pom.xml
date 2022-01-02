@@ -195,10 +195,15 @@
                 <version>${maven.surefire.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <browser>${Dbrowser}</browser>
-                        <testEnv>${DtestEnv}</testEnv>
-                        <testTag>${DtestTag}</testTag>
+                        <browser>${browser}</browser>
+                        <testEnv>${testEnv}</testEnv>
+                        <testTag>${testTag}</testTag>
                     </systemPropertyVariables>
+<!--                    <systemPropertyVariables>-->
+<!--                        <browser>${Dbrowser}</browser>-->
+<!--                        <testEnv>${DtestEnv}</testEnv>-->
+<!--                        <testTag>${DtestTag}</testTag>-->
+<!--                    </systemPropertyVariables>-->
                     <suiteXmlFiles>
                             <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
