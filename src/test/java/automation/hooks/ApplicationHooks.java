@@ -43,6 +43,11 @@ public class ApplicationHooks {
         try {
             config = new ConfigFileReader();
             properties = config.configFile();
+
+            System.out.println("browser ----" +System.getProperty("browser"));
+            System.out.println("TestEnvironment----" +System.getProperty("testEnv"));
+            System.out.println("testTag ----" +System.getProperty("testTag"));
+
         } catch (ConfigFileReaderException e) {
             e.printStackTrace();
         }

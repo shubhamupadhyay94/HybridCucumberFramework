@@ -160,6 +160,18 @@
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter</artifactId>-->
+<!--            <version>RELEASE</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.testng</groupId>-->
+<!--            <artifactId>testng</artifactId>-->
+<!--            <version>7.3.0</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
 
     </dependencies>
 
@@ -182,12 +194,21 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
-                    <includes>
-                        <include>**/ParallelRun.java</include>
-                    </includes>
-                    <parallel>methods</parallel>
-                    <threadCountMethods>2</threadCountMethods>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <systemPropertyVariables>
+                        <browser>${Dbrowser}</browser>
+                        <testEnv>${DtestEnv}</testEnv>
+                        <testTag>${DtestTag}</testTag>
+                    </systemPropertyVariables>
+                    <suiteXmlFiles>
+                            <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+
+<!--                    <includes>-->
+<!--                        <include>**/ParallelRun.java</include>-->
+<!--                    </includes>-->
+<!--                    <parallel>methods</parallel>-->
+<!--                    <threadCountMethods>2</threadCountMethods>-->
+<!--                    <useUnlimitedThreads>true</useUnlimitedThreads>-->
                 </configuration>
             </plugin>
 

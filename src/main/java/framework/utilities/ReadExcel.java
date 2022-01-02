@@ -46,7 +46,7 @@ public class ReadExcel {
                 int noOfRows = sheet.getPhysicalNumberOfRows();
                 int noOfColumn = sheet.getRow(0).getPhysicalNumberOfCells();
 
-                System.out.println("Index is " + noOfRows + "---------column -------" + noOfColumn);
+              //  System.out.println("Index is " + noOfRows + "---------column -------" + noOfColumn);
 
                 int valueIndex = 0;
                 int keyIndex = 0;

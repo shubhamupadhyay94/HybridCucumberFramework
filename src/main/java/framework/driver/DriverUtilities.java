@@ -60,6 +60,12 @@ public class DriverUtilities {
             } else if (browser.equals("ie")) {
                 WebDriverManager.iedriver().setup();
                 tlDriver.set(new InternetExplorerDriver());
+            }  else if (browser.equals("headlessChrome")) {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+
+                options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors","--disable-extensions","--no-sandbox","--disable-dev-shm-usage");
+                tlDriver.set(new ChromeDriver(options));
             } else {
                 System.out.println("Browser is not supported.");
             }
