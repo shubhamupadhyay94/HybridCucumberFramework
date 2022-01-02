@@ -10,6 +10,7 @@ import framework.utilities.ReadExcel;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.bs.A;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assume;
 import org.openqa.selenium.OutputType;
@@ -38,7 +39,7 @@ public class ApplicationHooks {
 //
 //    }
 
-    String browser = null;
+   static String browser;
 
     @Before(order = 0)
     public void getProperty() throws ConfigFileReaderException {
@@ -46,7 +47,7 @@ public class ApplicationHooks {
             config = new ConfigFileReader();
             properties = config.configFile();
 
-            browser=System.getProperty("browser");
+            browser=  System.getProperty("browser");
 
              System.out.println("browser ----" +browser);
             System.out.println("TestEnvironment----" +System.getProperty("testEnv"));
@@ -73,15 +74,17 @@ public class ApplicationHooks {
     @Before(order = 1)
     public void launchBrowser() {
         try {
-            if(browser!=null){
-                //String browserName = properties.get(FrameworkConstant.BROWSER_NAME).toString();
+            if (!(browser.isEmpty())) {
+                  System.out.println(" Browser is =========="+browser);
+                // String browserName = properties.get(FrameworkConstant.BROWSER_NAME).toString();
                 driverUtilities = new DriverUtilities();
                 driver = driverUtilities.initDriver(browser);
-            }else{
+            } else {
                 String browserName = properties.get(FrameworkConstant.BROWSER_NAME).toString();
                 driverUtilities = new DriverUtilities();
                 driver = driverUtilities.initDriver(browserName);
             }
+
 
         } catch (DriverUtilitiesException e) {
             e.printStackTrace();
@@ -111,4 +114,11 @@ public class ApplicationHooks {
         }
     }
 
+
+    public  static void main(String args[]) throws ConfigFileReaderException {
+
+        ApplicationHooks applicationHooks = new ApplicationHooks();
+        applicationHooks.getProperty();
+        applicationHooks.launchBrowser();
+    }
 }

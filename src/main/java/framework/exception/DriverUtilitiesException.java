@@ -20,4 +20,7 @@ public class DriverUtilitiesException extends Exception{
     public DriverUtilitiesException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+
+    public DriverUtilitiesException(StackTraceElement[] stackTrace, Exception e) {
+    }
 }

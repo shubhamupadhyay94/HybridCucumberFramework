@@ -30,7 +30,7 @@ public class DriverUtilities {
 
         try {
             System.out.println("Browser name is " + browser);
-            if (browser.equals("chrome")) {
+            if (browser.trim().equalsIgnoreCase("chrome")) {
                 WebDriverManager.chromedriver().setup();
 
                 ChromeOptions option = new ChromeOptions();
@@ -51,16 +51,16 @@ public class DriverUtilities {
 
                 tlDriver.set(new ChromeDriver(option));
 
-            } else if (browser.equals("firefox")) {
+            } else if (browser.trim().equalsIgnoreCase("firefox")) {
                 WebDriverManager.firefoxdriver().setup();
                 tlDriver.set(new FirefoxDriver());
-            } else if (browser.equals("edge")) {
+            } else if (browser.trim().equalsIgnoreCase("edge")) {
                 WebDriverManager.edgedriver().setup();
                 tlDriver.set(new EdgeDriver());
-            } else if (browser.equals("ie")) {
+            } else if (browser.trim().equalsIgnoreCase("ie")) {
                 WebDriverManager.iedriver().setup();
                 tlDriver.set(new InternetExplorerDriver());
-            }  else if (browser.equals("headlessChrome")) {
+            }  else if (browser.trim().equalsIgnoreCase("headlessChrome")) {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
 
@@ -76,7 +76,7 @@ public class DriverUtilities {
             Thread.sleep(2000);
             return getDriver();
         } catch (Exception e) {
-            throw new DriverUtilitiesException(e.getMessage(), e);
+            throw new DriverUtilitiesException(e.getStackTrace(), e);
         }
 
 
